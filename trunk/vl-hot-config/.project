@@ -1,0 +1,15 @@
+# Gambas Project File 1.0
+Project=vl-hot-config
+Title=vl-hot-config
+Icon=vl-hot.png
+Startup=Main
+TabSize=3
+Version=1.9.10
+Library=gb.qt
+SnapToGrid=1
+ShowGrid=1
+Snap=4
+Localize=1
+KeepDebugInfo=1
+ControlPublic=1
+Prefix=0

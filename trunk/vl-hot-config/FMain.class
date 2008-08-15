@@ -1,0 +1,408 @@
+' Gambas class file
+
+PUBLIC FATcodepage AS String
+PUBLIC FATcharset AS String
+PUBLIC NTFSnls AS String
+PUBLIC retProc AS String
+
+PUBLIC SUB Form_Open()
+
+ME.Title = ME.Title & " " & Application.Version
+ME.Center
+
+ReadCharsets
+ReadConf
+
+cmbFATcodepage.Index = cmbFATcodepage.Find(FATcodepage)
+cmbFATcharsets.Index = cmbFATcharsets.Find(FATcharset)
+cmbNTFSnls.Index = cmbNTFSnls.Find(NTFSnls)
+
+IF txtCustomMountPoints.Enabled=TRUE THEN
+   butNamesRestore_Click
+ENDIF
+
+butExit.SetFocus
+
+END
+
+PUBLIC SUB ReadConf()   ' read config file:
+DIM sTemp AS String
+DIM pos1 AS Integer
+DIM pos2 AS Integer
+
+Global.reading = TRUE
+
+' get VL-Hot version:
+txtconfver.Text = "vl-hot.conf version: " & Global.ReadIni("RELEASE", "UNKNOWN")
+' check for verbosity:
+IF Global.ReadIni("DIAG", 1)=0 THEN
+   rbtDiagOFF.Value = TRUE
+ELSE
+   rbtDiagON.Value = TRUE
+ENDIF
+' get mount base path:
+txtMOUNTPATH.Text = Global.ReadIni("MOUNT_PATH", "/mnt/vl-hot")
+' get desktop icon file path:
+txtICON.Text = Global.ReadIni("ICON", "/usr/share/pixmaps/vl-hot.png")
+
+' check for "noatime" in mount sync options:
+sTemp = Global.ReadIni("MOUNTSYNC", "noatime")
+pos1 = Instr(sTemp,"noatime")
+IF pos1 > 0 THEN
+   noatime.Value = TRUE
+ELSE
+   noatime.Value = FALSE
+ENDIF
+
+' check for "exec" in mount sync options:
+pos1 = Instr(sTemp,"exec")
+IF pos1 > 0 THEN
+   exec.Value = TRUE
+ELSE
+   exec.Value = FALSE
+ENDIF
+
+' check for "dirsync" in mount sync options:
+pos1 = Instr(sTemp,"dirsync")
+IF pos1 > 0 THEN
+   dirsync.Value = TRUE
+ELSE
+   dirsync.Value = FALSE
+ENDIF
+
+' check for "sync" in mount sync options (beware of "dirsync"):
+pos2 = Instr(sTemp,"sync")
+IF pos2 > 0 THEN
+   IF pos2 = pos1+3 THEN
+      pos1 = Instr(sTemp,"sync",pos2+1)
+      IF pos1 > 0 THEN
+         sync.Value = TRUE
+      ELSE
+         sync.Value = FALSE
+      ENDIF
+   ELSE
+      sync.Value = TRUE
+   ENDIF
+ELSE
+   sync.Value = FALSE
+ENDIF
+
+txtExclude.Text = Global.ReadIni("EXCLUDED_DEVICE", "")
+txtInclude.Text = Global.ReadIni("INCLUDED_DEVICE", "")
+
+IF Global.ReadIni("NTFSIO", "ro") = "ro" THEN
+   NTFSro.Value = TRUE
+ELSE
+   NTFSro.Value = FALSE
+ENDIF
+
+IF Global.ReadIni("NTFS3G", 0) = 1 THEN
+   NTFS3G.Value = TRUE
+ELSE
+   NTFS3G.Value = FALSE
+ENDIF
+
+IF Global.ReadIni("NTFS3Gforce", 0) = 1 THEN
+   NTFS3Gforce.Value = TRUE
+ELSE
+   NTFS3Gforce.Value = FALSE
+ENDIF
+
+FATcodepage = Global.ReadIni("FATCODEPAGE", "437")
+FATcharset = Global.ReadIni("FATIOCHARSET", "iso8859-15")
+NTFSnls = Global.ReadIni("NTFSNLS", "utf8")
+
+' get sound files path:
+txtSuccess.Text = Global.ReadIni("SND_SUCCESS", "/usr/share/vl-hot/success.ogg")
+txtError.Text = Global.ReadIni("SND_ERROR", "/usr/share/vl-hot/error.ogg")
+
+' check for "Sounds enabled" in Notification options:
+sTemp = Global.ReadIni("SND_ENABLE", "1")
+'txtSuccess.Enabled = TRUE
+'txtError.Enabled = TRUE
+'chkSounds.Enabled = TRUE
+IF sTemp="1" THEN
+'   tbtSuccess.Enabled = TRUE
+'   tbtError.Enabled = TRUE
+   chkSounds.Value = TRUE
+ELSE
+'   tbtSuccess.Enabled = FALSE
+'   tbtError.Enabled = FALSE
+   chkSounds.Value = FALSE
+ENDIF
+
+Global.reading = FALSE
+
+END
+
+PUBLIC SUB WriteConf()  ' write config file:
+DIM sTemp AS String
+
+' General tab:
+IF rbtDiagOFF.Value = TRUE THEN
+   Global.WriteIni("DIAG", 0)
+ELSE IF rbtDiagON.Value = TRUE THEN
+   Global.WriteIni("DIAG", 1)
+ENDIF
+' get mount base path:
+IF IsDir(txtMOUNTPATH.Text) THEN
+   Global.WriteIni("MOUNT_PATH", txtMOUNTPATH.Text)
+ELSE
+ENDIF
+' get desktop icon file path:
+IF Exist(txtICON.Text) THEN
+   Global.WriteIni("ICON", txtICON.Text)
+ELSE
+ENDIF
+
+' Mount tab:
+IF noatime.Value = TRUE THEN sTemp="noatime"
+IF exec.Value = TRUE THEN
+   IF sTemp="" THEN
+      sTemp=sTemp & "exec"
+   ELSE
+      sTemp=sTemp & ",exec"
+   ENDIF
+ENDIF
+IF sync.Value = TRUE THEN
+   IF sTemp="" THEN
+      sTemp=sTemp & "sync"
+   ELSE
+      sTemp=sTemp & ",sync"
+   ENDIF
+ENDIF
+IF dirsync.Value = TRUE THEN
+   IF sTemp="" THEN
+      sTemp=sTemp & "dirsync"
+   ELSE
+      sTemp=sTemp & ",dirsync"
+   ENDIF
+ENDIF
+Global.WriteIni("MOUNTSYNC", sTemp)
+Global.WriteIni("EXCLUDED_DEVICE", txtExclude.Text)
+Global.WriteIni("INCLUDED_DEVICE", txtInclude.Text)
+
+' FAT tab:
+Global.WriteIni("FATCODEPAGE", cmbFATcodepage.Text)
+Global.WriteIni("FATIOCHARSET", cmbFATcharsets.Text)
+Global.WriteIni("NTFSNLS", cmbNTFSnls.Text)
+
+' NTFS tab:
+IF NTFSro.Value = TRUE THEN
+   Global.WriteIni("NTFSIO", "ro")
+ELSE
+   Global.WriteIni("NTFSIO", "rw")
+ENDIF
+
+IF NTFS3G.Value = TRUE THEN
+   Global.WriteIni("NTFS3G", 1)
+ELSE
+   Global.WriteIni("NTFS3G", 0)
+ENDIF
+
+IF NTFS3Gforce.Value = TRUE THEN
+   Global.WriteIni("NTFS3Gforce", 1)
+ELSE
+   Global.WriteIni("NTFS3Gforce", 0)
+ENDIF
+
+' Notification tab:
+Global.WriteIni("SND_SUCCESS", txtSuccess.Text)
+Global.WriteIni("SND_ERROR", txtError.Text)
+IF chkSounds.Value = TRUE THEN
+   Global.WriteIni("SND_ENABLE", 1)
+ELSE
+   Global.WriteIni("SND_ENABLE", 0)
+ENDIF
+
+END
+
+PUBLIC SUB ReadCharsets()
+DIM MyProc AS Process
+DIM sTemp AS String
+DIM element AS String
+
+SHELL "uname -r" FOR READ AS MyProc
+WHILE MyProc.State = MyProc.Running
+  WAIT 0.1
+WEND
+
+sTemp = retProc
+
+' reset charset combo:
+cmbFATcodepage.Clear
+cmbFATcharsets.Clear
+cmbNTFSnls.Clear
+' FOR EACH element IN Dir(Global.PathNLSBase & sTemp & Global.PathNLSTail, "nls_*.ko")  '.Sort()
+'    ' remove file extension:
+'    element = Left$(element,Instr(element,".ko") - 1)
+'    IF Left$(element,6) = "nls_cp" THEN
+'       element = Mid$(element,7)
+'       cmbFATcodepage.Add(element)
+'    ELSE
+'       element = Mid$(element,5)
+'       cmbFATcharsets.Add(element)
+'       cmbNTFSnls.Add(element)
+'    ENDIF
+' NEXT
+
+
+'cmbFATcodepage.Add(element)
+
+'cmbFATcharsets.Add(element)
+
+'cmbNTFSnls.Add(element)
+
+
+cmbFATcodepage.Index = 0
+cmbFATcharsets.Index = 0
+cmbNTFSnls.Index = 0
+
+END
+
+PUBLIC SUB butExit_Click()
+
+ME.close
+
+END
+
+PUBLIC SUB sync_Click()
+
+IF Global.reading = FALSE THEN
+   dirsync.Value = sync.Value
+ENDIF
+
+END
+
+PUBLIC SUB dirsync_Click()
+
+IF Global.reading = FALSE THEN
+   sync.Value = dirsync.Value
+ENDIF
+
+END
+
+PUBLIC SUB butReload_Click()
+
+ReadConf
+
+END
+
+PUBLIC SUB butWrite_Click()
+
+WriteConf
+
+END
+
+PUBLIC SUB Process_Read()
+DIM sLine AS String
+
+LINE INPUT #LAST, sLine
+retProc = sLine
+
+END
+
+PUBLIC SUB tbtMountbase_Click()
+
+IF IsDir(txtMOUNTPATH.Text) THEN
+   txtMOUNTPATH.text = Global.GetDir(txtMOUNTPATH.text)
+ELSE
+   txtMOUNTPATH.text = Global.GetDir("/mnt/vl-hot")
+ENDIF
+
+END
+
+PUBLIC SUB tbtIcon_Click()
+
+IF Exist(txtICON.Text) THEN
+   txtICON.Text = Global.GetFile(txtICON.Text, "icons")
+ELSE
+   txtICON.Text = Global.GetFile("/usr/share/pixmaps", "icons")
+ENDIF
+
+END
+
+PUBLIC SUB ToolButton1_Click()
+END
+
+PUBLIC SUB tbtSuccess_Click()
+
+IF Exist(txtSuccess.Text) THEN
+   txtSuccess.Text = Global.GetFile(txtSuccess.Text, "sounds")
+ELSE
+   txtSuccess.Text = Global.GetFile("/usr/share/vl-hot/success.ogg", "sounds")
+ENDIF
+
+END
+
+PUBLIC SUB tbtError_Click()
+
+IF Exist(txtError.Text) THEN
+   txtError.Text = Global.GetFile(txtError.Text, "sounds")
+ELSE
+   txtError.Text = Global.GetFile("/usr/share/vl-hot/error.ogg", "sounds")
+ENDIF
+
+END
+
+
+PUBLIC SUB chkSounds_Click()
+
+IF chkSounds.Enabled=TRUE AND chkSounds.Value = TRUE THEN
+   tbtSuccess.Enabled = TRUE
+   tbtError.Enabled = TRUE
+ELSE
+   tbtSuccess.Enabled = FALSE
+   tbtError.Enabled = FALSE
+ENDIF
+
+END
+
+
+PUBLIC SUB rbtNTFSperm_Click()
+
+IF NTFS3G.Enabled=TRUE AND NTFS3G.Value=TRUE THEN
+   NTFS3Gforce.Enabled=TRUE
+ELSE
+   NTFS3Gforce.Enabled=FALSE
+ENDIF
+
+END
+
+
+PUBLIC SUB butNamesRestore_Click()
+DIM hFile AS File
+DIM LineData AS String
+
+txtCustomMountPoints.Clear
+
+'OPEN "/home/joe1962/temp/vl-hot_names.conf" FOR READ AS #hFile
+OPEN "/etc/udev/vl-hot_names.conf" FOR READ AS #hFile
+
+WHILE NOT Eof(hFile)
+   LINE INPUT #hFile, LineData
+   txtCustomMountPoints.Text=txtCustomMountPoints.Text & LineData & gb.NewLine
+WEND
+
+CLOSE #hFile
+
+END
+
+
+PUBLIC SUB butNamesSave_Click()
+DIM hFile AS File
+DIM arrTemp AS String[]
+DIM index AS Integer
+
+arrTemp=Split(txtCustomMountPoints.Text,gb.NewLine)
+
+'OPEN "/home/joe1962/temp/vl-hot_names.conf" FOR CREATE AS #hFile
+OPEN "/etc/udev/vl-hot_names.conf" FOR CREATE AS #hFile
+
+FOR index=0 TO arrTemp.Max
+   PRINT #hFile, arrTemp[index]
+NEXT
+
+CLOSE #hFile
+
+END

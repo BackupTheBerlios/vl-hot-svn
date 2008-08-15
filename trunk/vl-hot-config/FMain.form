@@ -1,0 +1,356 @@
+# Gambas Form File 1.0
+
+{ FMain Form
+  Move(231,629,419,212)
+  Text = ("vl-hot-config")
+  Icon = Picture["vl_hot.png"]
+  Border = Window.Fixed
+  { TabStrip1 TabStrip
+    Move(4,4,412,172)
+    Font = Font["Luxi Sans,10"]
+    Count = 6
+    Index = 0
+    Text = ("General")
+    { Frame3 Frame
+      Move(4,4,400,80)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Paths:")
+      { Label2 Label
+        Move(4,20,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("Mount base:")
+        Alignment = Align.Right
+      }
+      { txtMOUNTPATH TextBox
+        Move(96,20,268,24)
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Base path for VL-Hot mounted drives and partitions.")
+        Text = ("")
+        Alignment = Align.Normal
+        ReadOnly = True
+      }
+      { Label3 Label
+        Move(4,48,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("Desktop icon:")
+        Alignment = Align.Right
+      }
+      { txtICON TextBox
+        Move(96,48,268,24)
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Path to file to be used as desktop icon for VL-Hot mounted drive.")
+        Text = ("")
+        Alignment = Align.Normal
+        ReadOnly = True
+      }
+      { tbtMountbase ToolButton
+        Move(368,20,24,24)
+        Enabled = False
+        Text = ("")
+        Picture = Picture["folder.png"]
+        Border = True
+      }
+      { tbtIcon ToolButton
+        Move(368,48,24,24)
+        Enabled = False
+        Text = ("")
+        Picture = Picture["folder.png"]
+        Border = True
+      }
+    }
+    { Frame2 Frame
+      Move(4,84,400,52)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Verbosity:")
+      { rbtDiagON RadioButton rbtDiag
+        Move(12,20,56,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("More VL-Hot events will show in /var/log/messages.\nUseful for debugging purposes.")
+        Text = ("High")
+      }
+      { rbtDiagOFF RadioButton rbtDiag
+        Move(84,20,56,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Only most important VL-Hot events will show in /var/log/messages.\nDefault in normal operation.")
+        Text = ("Low")
+      }
+    }
+    Index = 1
+    Text = ("Mount")
+    { Frame4 Frame
+      Move(4,84,400,52)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Options:")
+      { noatime CheckBox
+        Move(24,20,80,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Do  not  update  inode  access times.\nDefault ON for faster access and saving writes to flash memory.")
+        Text = ("noatime")
+      }
+      { exec CheckBox
+        Move(120,20,80,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Permit execution of binaries and scripts on the mounted device.\nDefault OFF for security reasons.")
+        Text = ("exec")
+      }
+      { sync CheckBox
+        Move(216,20,80,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("All  I/O  to  the file system should be done synchronously.\nNot valid for all file systems.\nDefault OFF due to extremely slow write speeds.")
+        Text = ("sync")
+      }
+      { dirsync CheckBox
+        Move(312,20,80,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("All directory updates within the file system should be done synchronously.\nDefault OFF due to extremely slow write speeds.")
+        Text = ("dirsync")
+      }
+    }
+    { Frame7 Frame
+      Move(4,4,400,80)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Device selectivity:")
+      { Label6 Label
+        Move(4,20,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("Exclude:")
+        Alignment = Align.Right
+      }
+      { txtExclude TextBox
+        Move(96,20,296,24)
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Devices that should not be mounted by VL-Hot.\nEnter a space delimited list. Example: sda* sdb1 sdc2")
+        Text = ("")
+        Alignment = Align.Normal
+        ReadOnly = True
+      }
+      { Label7 Label
+        Move(4,48,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("Include:")
+        Alignment = Align.Right
+      }
+      { txtInclude TextBox
+        Move(96,48,296,24)
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Devices that must be mounted by VL-Hot even if positive for excluded list.\nEnter a space delimited list. Example: sda* sdb1 sdc2")
+        Text = ("")
+        Alignment = Align.Normal
+        ReadOnly = True
+      }
+    }
+    Index = 2
+    Text = ("FAT")
+    { Frame1 Frame
+      Move(4,4,400,80)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Translation")
+      { Label1 Label
+        Move(4,20,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("codepage:")
+        Alignment = Align.Right
+      }
+      { cmbFATcodepage ComboBox
+        Move(96,20,296,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Sets the codepage for converting to shortname characters\non FAT and VFAT filesystems.\nBy default, codepage 437 is used.")
+        Text = (" ")
+        ReadOnly = True
+      }
+      { Label4 Label
+        Move(4,48,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("charset:")
+        Alignment = Align.Right
+      }
+      { cmbFATcharsets ComboBox
+        Move(96,48,296,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Character set to use for converting between 8 bit characters and 16 bit\nUnicode characters.  Long filenames are stored on disk in Unicode format.\nThe default is iso8859-15.")
+        Text = (" ")
+        ReadOnly = True
+        Sorted = True
+      }
+    }
+    Index = 3
+    Text = ("NTFS")
+    { Frame5 Frame
+      Move(4,4,400,80)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Translation")
+      { Label5 Label
+        Move(4,20,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("charset / nls:")
+        Alignment = Align.Right
+      }
+      { cmbNTFSnls ComboBox
+        Move(96,20,296,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Character set to use when returning file names.  Unlike VFAT,\nNTFS suppresses names that contain unconvertible characters.")
+        Text = (" ")
+        ReadOnly = True
+        List = ("iso8859-15")
+        Sorted = True
+      }
+    }
+    { Frame6 Frame
+      Move(4,84,272,52)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Write permission:")
+      { NTFSro RadioButton rbtNTFSperm
+        Move(20,20,100,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Mount NTFS partitions for read-only access.")
+        Text = ("Kernel (RO)")
+      }
+      { NTFS3G RadioButton rbtNTFSperm
+        Move(140,20,124,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Use NTFS-3G to mount NTFS partitions for read-write access.")
+        Text = ("NTFS-3G (RW)")
+      }
+    }
+    { Frame10 Frame
+      Move(280,84,124,52)
+      Text = ("NTFS3G options:")
+      { NTFS3GForce CheckBox
+        Move(28,20,64,24)
+        Enabled = False
+        Text = ("Forced")
+      }
+    }
+    Index = 4
+    Text = ("Notification")
+    { Frame8 Frame
+      Move(4,4,400,80)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Sound files:")
+      { Label8 Label
+        Move(4,20,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("Success:")
+        Alignment = Align.Right
+      }
+      { txtSuccess TextBox
+        Move(96,20,268,24)
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Successful unmount notification sound file.")
+        Text = ("")
+        Alignment = Align.Normal
+        ReadOnly = True
+      }
+      { Label9 Label
+        Move(4,48,88,24)
+        Font = Font["Luxi Sans,10"]
+        Text = ("Error:")
+        Alignment = Align.Right
+      }
+      { txtError TextBox
+        Move(96,48,268,24)
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Unmount error notification sound file.")
+        Text = ("")
+        Alignment = Align.Normal
+        ReadOnly = True
+      }
+      { tbtSuccess ToolButton
+        Move(368,20,24,24)
+        Enabled = False
+        Text = ("")
+        Picture = Picture["folder.png"]
+        Border = True
+      }
+      { tbtError ToolButton
+        Move(368,48,24,24)
+        Enabled = False
+        Text = ("")
+        Picture = Picture["folder.png"]
+        Border = True
+      }
+    }
+    { Frame9 Frame
+      Move(4,84,400,52)
+      Font = Font["Luxi Sans,10"]
+      Text = ("Options:")
+      { chkSounds CheckBox
+        Move(8,20,120,24)
+        Enabled = False
+        Font = Font["Luxi Sans,10"]
+        ToolTip = ("Enable / disable sound notifications.")
+        Text = ("enable sounds")
+      }
+    }
+    Index = 5
+    Text = ("Mountpoint")
+    { Frame11 Frame
+      Move(4,4,324,132)
+      Text = ("Custom mountpoints:")
+      { txtCustomMountPoints TextArea
+        Move(4,16,316,112)
+        Enabled = False
+        Text = ("")
+        Border = False
+      }
+    }
+    { Frame12 Frame
+      Move(332,4,72,132)
+      Text = ("Actions:")
+      { butNamesRestore Button
+        Move(4,60,64,32)
+        Enabled = False
+        ToolTip = ("Restore saved configuration from /etc/udev/vl-hot_names.conf")
+        Text = ("Restore")
+      }
+      { butNamesSave Button
+        Move(4,24,64,32)
+        Enabled = False
+        ToolTip = ("Save configuration changes to /etc/udev/vl-hot_names.conf")
+        Text = ("Save")
+      }
+      { Button1 Button
+        Move(4,96,64,32)
+        Enabled = False
+        Text = ("")
+      }
+    }
+    Index = 0
+  }
+  { txtconfver Label
+    Move(8,180,200,28)
+    Font = Font["Luxi Sans,10"]
+    Text = ("vl-hot.conf version: ")
+  }
+  { butReload Button
+    Move(216,176,64,32)
+    Font = Font["Luxi Sans,10"]
+    ToolTip = ("Reload configuration from disk, loosing unwritten changes.")
+    Text = ("Reload")
+    Default = True
+  }
+  { butWrite Button
+    Move(284,176,64,32)
+    Enabled = False
+    Font = Font["Luxi Sans,10"]
+    ToolTip = ("Writes configuration changes to disk.")
+    Text = ("Write")
+  }
+  { butExit Button
+    Move(352,176,64,32)
+    Font = Font["Luxi Sans,10"]
+    Text = ("Exit")
+    Cancel = True
+  }
+}

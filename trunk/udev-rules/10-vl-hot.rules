@@ -1,0 +1,37 @@
+# (c) Vector Linux, 2005
+# Joe1962's udev rules for VL-Hot
+#
+# (c) Vector Linux, 2005
+# Part of VL-Hot by Joe1962
+# Licensed under the GPL v2
+#
+# vl-hot release 1.0.4
+#
+
+# No more hotplug ;)
+
+#vl-hot 0.2.x style:
+#ACTION=="add", SUBSYSTEM=="block", BUS=="scsi", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k %n"
+#ACTION=="remove", ENV{VLHOT}=="%p", RUN+="/lib/udev/vl-hot_umount %k %n"
+
+# diag:
+#KERNEL="sd?[0-9]*", ACTION=="add", BUS=="scsi", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k %n"
+
+# new udev.rules style:
+#KERNEL="sd?[0-9]*", ACTION=="add", BUS=="usb", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k %n"
+#KERNEL="sd?[0-9]*", ACTION=="add", BUS=="pcmcia", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k %n"
+#KERNEL="sd?[0-9]*", ACTION=="add", BUS=="ieee1394", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k %n"
+#KERNEL="sd?[0-9]*", ACTION=="remove", RUN+="/lib/udev/vl-hot_umount %k %n"
+
+# vl-hot 0.3.x style:
+SUBSYSTEM=="block", ACTION=="add", BUS=="usb", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k udev"
+SUBSYSTEM=="block", ACTION=="add", BUS=="pcmcia", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k udev"
+SUBSYSTEM=="block", ACTION=="add", BUS=="ieee1394", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_mount %k udev"
+SUBSYSTEM=="block", ACTION=="remove", RUN+="/lib/udev/vl-hot_umount %k ignore udev"
+
+# vl-hot 0.3.x experimental XFCE style:
+#SUBSYSTEM=="block", ACTION=="add", BUS=="usb", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_icon %k"
+#SUBSYSTEM=="block", ACTION=="add", BUS=="pcmcia", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_icon %k"
+#SUBSYSTEM=="block", ACTION=="add", BUS=="ieee1394", NAME="%k", SYMLINK="vl-hot/%k", ENV{VLHOT}="%p", RUN+="/lib/udev/vl-hot_icon %k"
+#SUBSYSTEM=="block", ACTION=="remove", RUN+="/lib/udev/vl-hot_umount %k"
+
