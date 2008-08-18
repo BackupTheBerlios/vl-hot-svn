@@ -178,7 +178,6 @@
         ToolTip = ("Character set to use for converting between 8 bit characters and 16 bit\nUnicode characters.  Long filenames are stored on disk in Unicode format.\nThe default is iso8859-15.")
         Text = (" ")
         ReadOnly = True
-        Sorted = True
       }
     }
     Index = 3
@@ -201,7 +200,6 @@
         Text = (" ")
         ReadOnly = True
         List = ("iso8859-15")
-        Sorted = True
       }
     }
     { Frame6 Frame

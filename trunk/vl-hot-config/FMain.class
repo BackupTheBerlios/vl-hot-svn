@@ -13,10 +13,6 @@ ME.Center
 ReadCharsets
 ReadConf
 
-cmbFATcodepage.Index = cmbFATcodepage.Find(FATcodepage)
-cmbFATcharsets.Index = cmbFATcharsets.Find(FATcharset)
-cmbNTFSnls.Index = cmbNTFSnls.Find(NTFSnls)
-
 IF txtCustomMountPoints.Enabled=TRUE THEN
    butNamesRestore_Click
 ENDIF
@@ -29,6 +25,7 @@ PUBLIC SUB ReadConf()   ' read config file:
 DIM sTemp AS String
 DIM pos1 AS Integer
 DIM pos2 AS Integer
+DIM looper AS Integer
 
 Global.reading = TRUE
 
@@ -109,8 +106,25 @@ ELSE
 ENDIF
 
 FATcodepage = Global.ReadIni("FATCODEPAGE", "437")
+'cmbFATcodepage.Index = cmbFATcodepage.Find(FATcodepage)
+FOR looper=0 TO cmbFATcodepage.Count-1
+   cmbFATcodepage.Index=looper
+   IF Instr(cmbFATcodepage.Text,FATcodepage) THEN BREAK
+NEXT
+
 FATcharset = Global.ReadIni("FATIOCHARSET", "iso8859-15")
+'cmbFATcharsets.Index = cmbFATcharsets.Find(FATcharset)
+FOR looper=0 TO cmbFATcharsets.Count-1
+   cmbFATcharsets.Index=looper
+   IF Instr(cmbFATcharsets.Text,FATcharset) THEN BREAK
+NEXT
+
 NTFSnls = Global.ReadIni("NTFSNLS", "utf8")
+'cmbNTFSnls.Index = cmbNTFSnls.Find(NTFSnls)
+FOR looper=0 TO cmbNTFSnls.Count-1
+   cmbNTFSnls.Index=looper
+   IF Instr(cmbNTFSnls.Text,NTFSnls) THEN BREAK
+NEXT
 
 ' get sound files path:
 txtSuccess.Text = Global.ReadIni("SND_SUCCESS", "/usr/share/vl-hot/success.ogg")
@@ -183,9 +197,9 @@ Global.WriteIni("EXCLUDED_DEVICE", txtExclude.Text)
 Global.WriteIni("INCLUDED_DEVICE", txtInclude.Text)
 
 ' FAT tab:
-Global.WriteIni("FATCODEPAGE", cmbFATcodepage.Text)
-Global.WriteIni("FATIOCHARSET", cmbFATcharsets.Text)
-Global.WriteIni("NTFSNLS", cmbNTFSnls.Text)
+Global.WriteIni("FATCODEPAGE", Split(cmbFATcodepage.Text,Space(1))[0])
+Global.WriteIni("FATIOCHARSET", Split(cmbFATcharsets.Text,Space(1))[0])
+Global.WriteIni("NTFSNLS", Split(cmbNTFSnls.Text,Space(1))[0])
 
 ' NTFS tab:
 IF NTFSro.Value = TRUE THEN
@@ -233,6 +247,7 @@ sTemp = retProc
 cmbFATcodepage.Clear
 cmbFATcharsets.Clear
 cmbNTFSnls.Clear
+
 ' FOR EACH element IN Dir(Global.PathNLSBase & sTemp & Global.PathNLSTail, "nls_*.ko")  '.Sort()
 '    ' remove file extension:
 '    element = Left$(element,Instr(element,".ko") - 1)
@@ -246,13 +261,77 @@ cmbNTFSnls.Clear
 '    ENDIF
 ' NEXT
 
-
 'cmbFATcodepage.Add(element)
+cmbFATcodepage.Add("437 (United States, Canada)")
+cmbFATcodepage.Add("737 (Greek)")
+cmbFATcodepage.Add("775 (Baltic Rim)")
+cmbFATcodepage.Add("850 (Europe)")
+cmbFATcodepage.Add("852 (Central/Eastern Europe)")
+cmbFATcodepage.Add("855 (Cyrillic)")
+cmbFATcodepage.Add("857 (Turkish)")
+cmbFATcodepage.Add("860 (Portuguese)")
+cmbFATcodepage.Add("861 (Icelandic)")
+cmbFATcodepage.Add("862 (Hebrew)")
+cmbFATcodepage.Add("863 (Canadian French)")
+cmbFATcodepage.Add("864 (Arabic)")
+cmbFATcodepage.Add("865 (Norwegian, Danish)")
+cmbFATcodepage.Add("866 (Cyrillic/Russian)")
+cmbFATcodepage.Add("869 (Greek)")
+cmbFATcodepage.Add("874 (Thai)")
+cmbFATcodepage.Add("932")
+cmbFATcodepage.Add("936 (Simplified Chinese)")
+cmbFATcodepage.Add("949 (Korean)")
+cmbFATcodepage.Add("1250 (Slavic/Central European Languages)")
+cmbFATcodepage.Add("1251 (Bulgarian, Belarusian)")
+cmbFATcodepage.Add("1255 (Hebrew)")
 
 'cmbFATcharsets.Add(element)
+cmbFATcharsets.Add("ASCII (United States)")
+cmbFATcharsets.Add("ISO8859_1 (Latin 1; Western European Languages)")
+cmbFATcharsets.Add("ISO8859_2 (Latin 2; Slavic/Central European Languages)")
+cmbFATcharsets.Add("ISO8859_3 (Latin 3; Esperanto, Galician, Maltese, Turkish)")
+cmbFATcharsets.Add("ISO8859_4 (Latin 4; old Baltic charset)")
+cmbFATcharsets.Add("ISO8859_5 (Cyrillic)")
+cmbFATcharsets.Add("ISO8859_6 (Arabic)")
+cmbFATcharsets.Add("ISO8859_7 (Modern Greek)")
+cmbFATcharsets.Add("ISO8859_8 (Hebrew)")
+cmbFATcharsets.Add("ISO8859_9 (Latin 5; Turkish)")
+cmbFATcharsets.Add("ISO8859_13 (Latin 7; Baltic)")
+cmbFATcharsets.Add("ISO8859_14 (Latin 8; Celtic)")
+cmbFATcharsets.Add("ISO8859_15 (Latin 9; Western European Languages WITH Euro)")
+cmbFATcharsets.Add("GB2312 (Simplified Chinese)")
+cmbFATcharsets.Add("Big5 (Traditional Chinese)")
+cmbFATcharsets.Add("EUC-JP (Japanese)")
+cmbFATcharsets.Add("Shift-JIS (Japanese)")
+cmbFATcharsets.Add("EUC-KR (Korean)")
+cmbFATcharsets.Add("TIS-620 (Thai)")
+cmbFATcharsets.Add("KOI8_R (Russian)")
+cmbFATcharsets.Add("KOI8_U (Ukrainian, Belarusian)")
+cmbFATcharsets.Add("UTF-8")
 
 'cmbNTFSnls.Add(element)
-
+cmbNTFSnls.Add("ASCII (United States)")
+cmbNTFSnls.Add("ISO8859_1 (Latin 1; Western European Languages)")
+cmbNTFSnls.Add("ISO8859_2 (Latin 2; Slavic/Central European Languages)")
+cmbNTFSnls.Add("ISO8859_3 (Latin 3; Esperanto, Galician, Maltese, Turkish)")
+cmbNTFSnls.Add("ISO8859_4 (Latin 4; old Baltic charset)")
+cmbNTFSnls.Add("ISO8859_5 (Cyrillic)")
+cmbNTFSnls.Add("ISO8859_6 (Arabic)")
+cmbNTFSnls.Add("ISO8859_7 (Modern Greek)")
+cmbNTFSnls.Add("ISO8859_8 (Hebrew)")
+cmbNTFSnls.Add("ISO8859_9 (Latin 5; Turkish)")
+cmbNTFSnls.Add("ISO8859_13 (Latin 7; Baltic)")
+cmbNTFSnls.Add("ISO8859_14 (Latin 8; Celtic)")
+cmbNTFSnls.Add("ISO8859_15 (Latin 9; Western European Languages WITH Euro)")
+cmbNTFSnls.Add("GB2312 (Simplified Chinese)")
+cmbNTFSnls.Add("Big5 (Traditional Chinese)")
+cmbNTFSnls.Add("EUC-JP (Japanese)")
+cmbNTFSnls.Add("Shift-JIS (Japanese)")
+cmbNTFSnls.Add("EUC-KR (Korean)")
+cmbNTFSnls.Add("TIS-620 (Thai)")
+cmbNTFSnls.Add("KOI8_R (Russian)")
+cmbNTFSnls.Add("KOI8_U (Ukrainian, Belarusian)")
+cmbNTFSnls.Add("UTF-8")
 
 cmbFATcodepage.Index = 0
 cmbFATcharsets.Index = 0

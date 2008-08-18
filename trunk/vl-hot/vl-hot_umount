@@ -18,14 +18,13 @@
 #**************************************************************************
 # MAIN:
 #**************************************************************************
-feedback "Starting vl-hot_umount..."
-
-
 if [ "$(id -un)" != "root" ]
 then
 	exec $SUDO $0 "$@"
 	exit
 fi
+
+feedback "Starting vl-hot_umount..."
 
 DEVNAME=$1
 [ $DIAG = "1" ] && feedback "Device is: $DEVNAME"
@@ -50,7 +49,7 @@ UMOUNTTYPE=$4
 # Check if mountname in use:
 MOUNTED=`mount | grep -c $UMOUNTPOINT`
 if [ $MOUNTED = "0" ]; then
-	feedback "$UMOUNTPOINT not mounted"
+	feedback "ALERT: $UMOUNTPOINT not mounted..."
 	rmdir $UMOUNTPOINT
 	delDesktopIcon
 else
@@ -61,14 +60,14 @@ else
 	then
 		fuser -k -KILL -m $UMOUNTPOINT
 	fi
-	feedback "umounting $UMOUNTPOINT"
+	feedback "Umounting $UMOUNTPOINT"
 	# Save cached data:
 	sync
 	# Unmounting:
 	if umount $UMOUNT_OPTIONS $UMOUNTPOINT
 	then
 		delDesktopIcon
-		feedback "removing $UMOUNTPOINT"
+		feedback "Removing $UMOUNTPOINT"
 		rmdir $UMOUNTPOINT
 		if [ $SOURCE = "desktopicon" ]
 		then
@@ -82,7 +81,7 @@ else
 			fnotify
 		fi
 	else
-		feedback "ERROR unmounting $UMOUNTPOINT"
+		feedback "ERROR: unmounting of $UMOUNTPOINT failed"
 		if [ $SOURCE = "desktopicon" ]
 		then
 			NOT_CRIT="Critical"
