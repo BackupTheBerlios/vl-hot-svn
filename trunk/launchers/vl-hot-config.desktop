@@ -2,10 +2,10 @@
 Encoding=UTF-8
 Comment=
 DocPath=
-Exec=kdesu "gbx -x /sbin/vl-hot-config"
-Icon=/usr/share/vl-hot/vl-hot.png
+Exec=vsuper "vl-hot-config.gambas"
+Icon=/usr/share/pixmaps/vl-hot.png
 MimeType=
-MiniIcon=/usr/share/vl-hot/vl-hot.png
+MiniIcon=/usr/share/pixmaps/vl-hot.png
 Name=vl-hot-config
 GenericName=VL-Hot configuration
 NotShowIn=KDE;

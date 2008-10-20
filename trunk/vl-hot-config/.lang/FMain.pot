@@ -14,267 +14,263 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: FMain.class:548
+#: FMain.class:552
 msgid "vl-hot-config"
 msgstr ""
 
-#: FMain.class:557
+#: FMain.class:561
 msgid "General"
 msgstr ""
 
-#: FMain.class:562
+#: FMain.class:566
 msgid "Paths:"
 msgstr ""
 
-#: FMain.class:567
-msgid "Mount base:"
+#: FMain.class:571
+msgid "Mount:"
 msgstr ""
 
-#: FMain.class:574
+#: FMain.class:578
 msgid "Base path for VL-Hot mounted drives and partitions."
 msgstr ""
 
-#: FMain.class:583
-msgid "Desktop icon:"
+#: FMain.class:586
+msgid "Icon:"
 msgstr ""
 
-#: FMain.class:590
+#: FMain.class:593
 msgid "Path to file to be used as desktop icon for VL-Hot mounted drive."
 msgstr ""
 
-#: FMain.class:616
+#: FMain.class:618
 msgid "Verbosity:"
 msgstr ""
 
-#: FMain.class:622
+#: FMain.class:625
 msgid "More VL-Hot events will show in /var/log/messages.\nUseful for debugging purposes."
 msgstr ""
 
-#: FMain.class:623
+#: FMain.class:626
 msgid "High"
 msgstr ""
 
-#: FMain.class:630
+#: FMain.class:634
 msgid "Only most important VL-Hot events will show in /var/log/messages.\nDefault in normal operation."
 msgstr ""
 
-#: FMain.class:631
+#: FMain.class:635
 msgid "Low"
 msgstr ""
 
-#: FMain.class:635
+#: FMain.class:639
 msgid "Mount"
 msgstr ""
 
-#: FMain.class:640
+#: FMain.class:644
 msgid "Options:"
 msgstr ""
 
-#: FMain.class:646
+#: FMain.class:650
 msgid "Do  not  update  inode  access times.\nDefault ON for faster access and saving writes to flash memory."
 msgstr ""
 
-#: FMain.class:647
+#: FMain.class:651
 msgid "noatime"
 msgstr ""
 
-#: FMain.class:654
+#: FMain.class:658
 msgid "Permit execution of binaries and scripts on the mounted device.\nDefault OFF for security reasons."
 msgstr ""
 
-#: FMain.class:655
+#: FMain.class:659
 msgid "exec"
 msgstr ""
 
-#: FMain.class:662
+#: FMain.class:666
 msgid "All  I/O  to  the file system should be done synchronously.\nNot valid for all file systems.\nDefault OFF due to extremely slow write speeds."
 msgstr ""
 
-#: FMain.class:663
+#: FMain.class:667
 msgid "sync"
 msgstr ""
 
-#: FMain.class:670
+#: FMain.class:674
 msgid "All directory updates within the file system should be done synchronously.\nDefault OFF due to extremely slow write speeds."
 msgstr ""
 
-#: FMain.class:671
+#: FMain.class:675
 msgid "dirsync"
 msgstr ""
 
-#: FMain.class:678
+#: FMain.class:682
 msgid "Device selectivity:"
 msgstr ""
 
-#: FMain.class:683
+#: FMain.class:687
 msgid "Exclude:"
 msgstr ""
 
-#: FMain.class:690
+#: FMain.class:694
 msgid "Devices that should not be mounted by VL-Hot.\nEnter a space delimited list. Example: sda* sdb1 sdc2"
 msgstr ""
 
-#: FMain.class:699
+#: FMain.class:702
 msgid "Include:"
 msgstr ""
 
-#: FMain.class:706
+#: FMain.class:709
 msgid "Devices that must be mounted by VL-Hot even if positive for excluded list.\nEnter a space delimited list. Example: sda* sdb1 sdc2"
 msgstr ""
 
-#: FMain.class:713
+#: FMain.class:715
 msgid "FAT"
 msgstr ""
 
-#: FMain.class:718
+#: FMain.class:720
 msgid "Translation"
 msgstr ""
 
-#: FMain.class:723
+#: FMain.class:725
 msgid "codepage:"
 msgstr ""
 
-#: FMain.class:731
+#: FMain.class:733
 msgid "Sets the codepage for converting to shortname characters\non FAT and VFAT filesystems.\nBy default, codepage 437 is used."
 msgstr ""
 
-#: FMain.class:732
-msgid " "
-msgstr ""
-
-#: FMain.class:739
+#: FMain.class:741
 msgid "charset:"
 msgstr ""
 
-#: FMain.class:747
+#: FMain.class:749
 msgid "Character set to use for converting between 8 bit characters and 16 bit\nUnicode characters.  Long filenames are stored on disk in Unicode format.\nThe default is iso8859-15."
 msgstr ""
 
-#: FMain.class:753
+#: FMain.class:755
 msgid "NTFS"
 msgstr ""
 
-#: FMain.class:763
-msgid "charset / nls:"
+#: FMain.class:765
+msgid "charset/nls:"
 msgstr ""
 
-#: FMain.class:771
+#: FMain.class:773
 msgid "Character set to use when returning file names.  Unlike VFAT,\nNTFS suppresses names that contain unconvertible characters."
 msgstr ""
 
-#: FMain.class:774
+#: FMain.class:776
 msgid "iso8859-15"
 msgstr ""
 
-#: FMain.class:781
+#: FMain.class:783
 msgid "Write permission:"
 msgstr ""
 
-#: FMain.class:787
+#: FMain.class:790
 msgid "Mount NTFS partitions for read-only access."
 msgstr ""
 
-#: FMain.class:788
+#: FMain.class:791
 msgid "Kernel (RO)"
 msgstr ""
 
-#: FMain.class:795
+#: FMain.class:799
 msgid "Use NTFS-3G to mount NTFS partitions for read-write access."
 msgstr ""
 
-#: FMain.class:796
+#: FMain.class:800
 msgid "NTFS-3G (RW)"
 msgstr ""
 
-#: FMain.class:802
+#: FMain.class:806
 msgid "NTFS3G options:"
 msgstr ""
 
-#: FMain.class:807
+#: FMain.class:811
 msgid "Forced"
 msgstr ""
 
-#: FMain.class:811
+#: FMain.class:815
 msgid "Notification"
 msgstr ""
 
-#: FMain.class:816
+#: FMain.class:820
 msgid "Sound files:"
 msgstr ""
 
-#: FMain.class:821
+#: FMain.class:825
 msgid "Success:"
 msgstr ""
 
-#: FMain.class:828
+#: FMain.class:832
 msgid "Successful unmount notification sound file."
 msgstr ""
 
-#: FMain.class:837
+#: FMain.class:840
 msgid "Error:"
 msgstr ""
 
-#: FMain.class:844
+#: FMain.class:847
 msgid "Unmount error notification sound file."
 msgstr ""
 
-#: FMain.class:876
+#: FMain.class:878
 msgid "Enable / disable sound notifications."
 msgstr ""
 
-#: FMain.class:877
+#: FMain.class:879
 msgid "enable sounds"
 msgstr ""
 
-#: FMain.class:881
+#: FMain.class:883
 msgid "Mountpoint"
 msgstr ""
 
-#: FMain.class:885
+#: FMain.class:887
 msgid "Custom mountpoints:"
 msgstr ""
 
-#: FMain.class:897
+#: FMain.class:899
 msgid "Actions:"
 msgstr ""
 
-#: FMain.class:902
+#: FMain.class:904
 msgid "Restore saved configuration from /etc/udev/vl-hot_names.conf"
 msgstr ""
 
-#: FMain.class:903
+#: FMain.class:905
 msgid "Restore"
 msgstr ""
 
-#: FMain.class:909
+#: FMain.class:911
 msgid "Save configuration changes to /etc/udev/vl-hot_names.conf"
 msgstr ""
 
-#: FMain.class:910
+#: FMain.class:912
 msgid "Save"
 msgstr ""
 
-#: FMain.class:925
+#: FMain.class:927
 msgid "vl-hot.conf version: "
 msgstr ""
 
-#: FMain.class:931
+#: FMain.class:933
 msgid "Reload configuration from disk, loosing unwritten changes."
 msgstr ""
 
-#: FMain.class:932
+#: FMain.class:934
 msgid "Reload"
 msgstr ""
 
-#: FMain.class:940
+#: FMain.class:941
 msgid "Writes configuration changes to disk."
 msgstr ""
 
-#: FMain.class:941
+#: FMain.class:942
 msgid "Write"
 msgstr ""
 
-#: FMain.class:947
+#: FMain.class:948
 msgid "Exit"
 msgstr ""
 

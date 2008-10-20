@@ -12,8 +12,10 @@ PUBLIC FUNCTION ReadIni(IniKey AS String, DefaultValue AS Variant) AS Variant
 DIM hSettings AS Settings
 DIM retVal AS Variant
 
+
 hSettings = NEW Settings(Global.INI_PATH)
-retVal = hSettings [ IniKey , DefaultValue ]
+'hSettings = NEW Settings(Global.INI_PATH)
+retVal = hSettings[IniKey, DefaultValue]
 RETURN retVal
 
 END
@@ -22,7 +24,7 @@ PUBLIC SUB WriteIni(IniKey AS String, SetValue AS Variant)
 DIM hSettings AS Settings
 
 hSettings = NEW Settings(Global.INI_PATH)
-hSettings [ IniKey ] = SetValue
+hSettings[IniKey] = SetValue
 
 END
 
@@ -33,13 +35,13 @@ Dialog.Title = "Choose a file"
 
 SELECT CASE filetype
 CASE "icons"
-   Dialog.Filter = [ "Icon files (*.png; *.jpg; *.jpeg; *.bmp)", "All files (*.*)" ]
+   Dialog.Filter = ["Icon files (*.png; *.jpg; *.jpeg; *.bmp)", "All files (*.*)"]
 CASE "sounds"
-   Dialog.Filter = [ "Sound files (*.ogg; *.mp3; *.wav)", "All files (*.*)" ]
+   Dialog.Filter = ["Sound files (*.ogg; *.mp3; *.wav)", "All files (*.*)"]
 END SELECT
 
 Dialog.path = initFile
-IF Dialog.openfile()=FALSE THEN
+IF Dialog.openfile() = FALSE THEN
    RETURN Dialog.path
 ELSE
    RETURN initFile

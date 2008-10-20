@@ -4,7 +4,7 @@
 # Part of VL-Hot by Joe1962
 # Licensed under the GPL v2
 #
-# vl-hot release 1.9.9
+# vl-hot release 1.9.20
 #
 
 
@@ -190,15 +190,15 @@ X-KDE-Priority=TopLevel
 Actions=Unmount;UnmountSignal;UnmountKill;
 
 [Desktop Action Unmount]
-Exec=/lib/udev/vl-hot_umount $DEVNAME desktopicon unmount
+Exec=/lib/udev/vl-hot_umount $DEVNAME $MOUNTPOINT desktopicon unmount
 Name=Unmount
 
 [Desktop Action UnmountSignal]
-Exec=/lib/udev/vl-hot_umount $DEVNAME desktopicon unmountsignal
+Exec=/lib/udev/vl-hot_umount $DEVNAME $MOUNTPOINT desktopicon unmountsignal
 Name=Unmount (signal processes)
 
 [Desktop Action UnmountKill]
-Exec=/lib/udev/vl-hot_umount $DEVNAME desktopicon unmountkill
+Exec=/lib/udev/vl-hot_umount $DEVNAME $MOUNTPOINT desktopicon unmountkill
 Name=Unmount (kill processes)
 
 EOF

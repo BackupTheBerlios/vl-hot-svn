@@ -2,7 +2,7 @@
 
 PUBLIC SUB Main()
 
-IF System.User <> "root" THEN
+IF System.User.Name <> "root" THEN
    message.Warning("You need to be root to run " & Application.Title & gb.NewLine & "Starting in read-only mode...")
 ELSE
    FMain.butWrite.Enabled = TRUE
@@ -23,12 +23,12 @@ ELSE
    FMain.cmbFATcodepage.Enabled = TRUE
    FMain.cmbFATcharsets.Enabled = TRUE
    FMain.cmbNTFSnls.Enabled = TRUE
-   FMain.chkSounds.Enabled=TRUE
-   FMain.tbtSuccess.Enabled=TRUE
-   FMain.tbtError.Enabled=TRUE
-   FMain.txtCustomMountPoints.Enabled=TRUE
-   FMain.butNamesSave.Enabled=TRUE
-   FMain.butNamesRestore.Enabled=TRUE
+   FMain.chkSounds.Enabled = TRUE
+   FMain.tbtSuccess.Enabled = TRUE
+   FMain.tbtError.Enabled = TRUE
+   FMain.txtCustomMountPoints.Enabled = TRUE
+   FMain.butNamesSave.Enabled = TRUE
+   FMain.butNamesRestore.Enabled = TRUE
 ENDIF
 
 FMain.Show
