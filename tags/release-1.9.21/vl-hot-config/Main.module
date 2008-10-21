@@ -1,0 +1,36 @@
+' Gambas module file
+
+PUBLIC SUB Main()
+
+IF System.User.Name <> "root" THEN
+   message.Warning("You need to be root to run " & Application.Title & gb.NewLine & "Starting in read-only mode...")
+ELSE
+   FMain.butWrite.Enabled = TRUE
+   FMain.txtMOUNTPATH.ReadOnly = FALSE
+   FMain.tbtMountbase.Enabled = TRUE
+   FMain.txtICON.ReadOnly = FALSE
+   FMain.tbtIcon.Enabled = TRUE
+   FMain.noatime.Enabled = TRUE
+   FMain.exec.Enabled = TRUE
+   FMain.sync.Enabled = TRUE
+   FMain.dirsync.Enabled = TRUE
+   FMain.txtExclude.ReadOnly = FALSE
+   FMain.txtInclude.ReadOnly = FALSE
+   FMain.rbtDiagON.Enabled = TRUE
+   FMain.rbtDiagOFF.Enabled = TRUE
+   FMain.NTFSro.Enabled = TRUE
+   FMain.NTFS3g.Enabled = TRUE
+   FMain.cmbFATcodepage.Enabled = TRUE
+   FMain.cmbFATcharsets.Enabled = TRUE
+   FMain.cmbNTFSnls.Enabled = TRUE
+   FMain.chkSounds.Enabled = TRUE
+   FMain.tbtSuccess.Enabled = TRUE
+   FMain.tbtError.Enabled = TRUE
+   FMain.txtCustomMountPoints.Enabled = TRUE
+   FMain.butNamesSave.Enabled = TRUE
+   FMain.butNamesRestore.Enabled = TRUE
+ENDIF
+
+FMain.Show
+
+END
