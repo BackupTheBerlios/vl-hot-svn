@@ -1,3 +1,8 @@
+2008-10-21    <joe1962@users.sourceforge.net>
+
+	* Released 1.9.21
+	* Moved "users" mount option to the start of mount options in vl-hot-functions, so overrides (like "exec") should work.
+
 2008-10-15    <joe1962@users.sourceforge.net>
 
 	* Released 1.9.20

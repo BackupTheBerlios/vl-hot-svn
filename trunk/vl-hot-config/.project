@@ -2,7 +2,7 @@
 Title=vl-hot-config
 Startup=Main
 Icon=vl-hot.png
-Version=1.9.21
+Version=1.9.22
 Library=gb.qt
 Library=gb.settings
 TabSize=3
