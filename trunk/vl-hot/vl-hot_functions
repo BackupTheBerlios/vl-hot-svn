@@ -100,31 +100,31 @@ function is_excluded() {
 function chooseMountOptions {
 	case $FSTYPE in 
 	Ext2)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,user"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC"
 		FSMOUNTTYPEARG="ext2"
 	;;
 	Ext3)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,user"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC"
 		FSMOUNTTYPEARG="ext3"
 	;;
 	ReiserFS)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,user"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC"
 		FSMOUNTTYPEARG="reiserfs"
 	;;
 	NTFS)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,user,nls=$NTFSNLS,$NTFSIO"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,nls=$NTFSNLS,$NTFSIO"
 		FSMOUNTTYPEARG="ntfs"
 	;;
 	FAT12)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,quiet,user"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,quiet"
 		FSMOUNTTYPEARG="msdos"
 	;;
 	FAT16)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,quiet,user,codepage=$FATCODEPAGE,iocharset=$FATIOCHARSET$FATUTF8"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,quiet,codepage=$FATCODEPAGE,iocharset=$FATIOCHARSET$FATUTF8"
 		FSMOUNTTYPEARG="vfat"
 	;;
 	FAT32)
-		MOUNT_OPTIONS="-o $MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,quiet,user,shortname=mixed,codepage=$FATCODEPAGE,iocharset=$FATIOCHARSET$FATUTF8"
+		MOUNT_OPTIONS="-o user,$MOUNTSYNC,uid=$USB_USER,gid=$USB_GROUP,fmask=$USB_UMASK,dmask=$USB_DMASK,quiet,shortname=mixed,codepage=$FATCODEPAGE,iocharset=$FATIOCHARSET$FATUTF8"
 		FSMOUNTTYPEARG="vfat"
 	;;
    *)
