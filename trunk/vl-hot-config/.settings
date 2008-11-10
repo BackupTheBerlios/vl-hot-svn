@@ -8,15 +8,15 @@ Count=0
 SearchIn="Project"
 CaseSensitive=False
 SearchWord=False
-SearchComment=False
+SearchComment=True
 SearchString=True
 
 [OpenFile]
 File[1]="FMain.form"
-File[2]="FMain.class:152.0"
-Active=2
+File[2]="FMain.class:239.0"
 File[3]="Global.module:9.0"
-File[4]="Main.module:3.0"
+File[4]="Main.module:20.0"
+Active=4
 Count=4
 
 [Watches]

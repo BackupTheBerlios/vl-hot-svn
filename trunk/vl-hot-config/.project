@@ -1,8 +1,9 @@
 # Gambas Project File 2.0
+# Compiled with Gambas 2.9.0
 Title=vl-hot-config
 Startup=Main
 Icon=vl-hot.png
-Version=1.9.22
+Version=1.9.26
 Library=gb.qt
 Library=gb.settings
 TabSize=3

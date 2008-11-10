@@ -232,17 +232,17 @@ ENDIF
 END
 
 PUBLIC SUB ReadCharsets()
-DIM MyProc AS Process
-DIM sTemp AS String
-DIM element AS String
+' NOTE: the dimmed out parta were for charsets/nls as kernel modules, not built-in.
+' DIM MyProc AS Process
+' DIM sTemp AS String
+' DIM element AS String
 
-'SHELL "uname -r" FOR READ AS MyProc
-MyProc = SHELL "uname -r" FOR READ AS "MyProc"
-WHILE MyProc.State = MyProc.Running
-  WAIT 0.1
-WEND
+' MyProc = SHELL "uname -r" FOR READ AS "MyProc"
+' WHILE MyProc.State = MyProc.Running
+'   WAIT 0.1
+' WEND
 
-sTemp = retProc
+' sTemp = retProc
 
 ' reset charset combo:
 cmbFATcodepage.Clear
