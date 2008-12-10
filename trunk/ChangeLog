@@ -1,3 +1,18 @@
+2008-12-10    <joe1962@users.sourceforge.net>
+
+	* Released 1.9.22
+
+2008-11-10    <joe1962>
+
+	* Changed check for System.User.Name = "root" to System.User.Id = 0.
+	* if System.User.Id <> 0, looks for kdesu or gksu.
+	* If found, executes another instance as root and exits.
+	* Separated user check and *su call to vlhc-launcher gambas2 cli app.
+
+2008-11-08    <joe1962@users.sourceforge.net>
+
+	* Updated TODO.
+
 2008-10-21    <joe1962@users.sourceforge.net>
 
 	* Released 1.9.21
