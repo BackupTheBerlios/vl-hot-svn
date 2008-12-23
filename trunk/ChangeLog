@@ -1,3 +1,18 @@
+2008-12-19    <joe1962@users.sourceforge.net>
+
+	* Redesigned vl-hot-config, versioned as 2.1.0.
+
+2008-12-13    <joe1962@users.sourceforge.net>
+
+	* Released 2.0.0.
+
+2008-12-13    <joe1962@users.sourceforge.net>
+
+	* Fixed application path when calling with kdesu/gksu.
+	* Removed remaining vsuper from .desktop files.
+	* Added new unmount icon by nightflier.
+	* Fixed vl-hot-config dialog filters for selecting icon and sound files.
+
 2008-12-10    <joe1962@users.sourceforge.net>
 
 	* Removed vlhc-launcher.

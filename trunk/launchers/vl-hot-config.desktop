@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Comment=
 DocPath=
-Exec=vsuper "vl-hot-config.gambas"
+Exec=vl-hot-config.gambas
 Icon=/usr/share/pixmaps/vl-hot.png
 MimeType=
 MiniIcon=/usr/share/pixmaps/vl-hot.png

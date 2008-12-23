@@ -4,7 +4,7 @@
 # Part of VL-Hot by Joe1962
 # Licensed under the GPL v2
 #
-# vl-hot release 1.9.22
+# vl-hot release 2.0.0
 #
 
 
@@ -214,7 +214,7 @@ Type=Application
 Name=Unmount $DESKTOPNAME
 Encoding=UTF-8
 Exec=/lib/udev/vl-hot_umount $DEVNAME $MOUNTPOINT desktopicon unmount
-Icon=$ICON
+Icon=$ICON_UNMOUNT
 NotShowIn=KDE;
 #OnlyShowIn=XFCE;
 
