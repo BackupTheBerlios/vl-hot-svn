@@ -1,0 +1,296 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-11-01 04:27+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .project:1 FMain.class:552
+msgid "vl-hot-config"
+msgstr ""
+
+#: FMain.class:561
+msgid "General"
+msgstr ""
+
+#: FMain.class:566
+msgid "Paths:"
+msgstr ""
+
+#: FMain.class:571
+msgid "Mount:"
+msgstr ""
+
+#: FMain.class:578
+msgid "Base path for VL-Hot mounted drives and partitions."
+msgstr ""
+
+#: FMain.class:586
+msgid "Icon:"
+msgstr ""
+
+#: FMain.class:593
+msgid "Path to file to be used as desktop icon for VL-Hot mounted drive."
+msgstr ""
+
+#: FMain.class:618
+msgid "Verbosity:"
+msgstr ""
+
+#: FMain.class:625
+msgid ""
+"More VL-Hot events will show in /var/log/messages.\n"
+"Useful for debugging purposes."
+msgstr ""
+
+#: FMain.class:626
+msgid "High"
+msgstr ""
+
+#: FMain.class:634
+msgid ""
+"Only most important VL-Hot events will show in /var/log/messages.\n"
+"Default in normal operation."
+msgstr ""
+
+#: FMain.class:635
+msgid "Low"
+msgstr ""
+
+#: FMain.class:639
+msgid "Mount"
+msgstr ""
+
+#: FMain.class:644
+msgid "Options:"
+msgstr ""
+
+#: FMain.class:650
+msgid ""
+"Do  not  update  inode  access times.\n"
+"Default ON for faster access and saving writes to flash memory."
+msgstr ""
+
+#: FMain.class:651
+msgid "noatime"
+msgstr ""
+
+#: FMain.class:658
+msgid ""
+"Permit execution of binaries and scripts on the mounted device.\n"
+"Default OFF for security reasons."
+msgstr ""
+
+#: FMain.class:659
+msgid "exec"
+msgstr ""
+
+#: FMain.class:666
+msgid ""
+"All  I/O  to  the file system should be done synchronously.\n"
+"Not valid for all file systems.\n"
+"Default OFF due to extremely slow write speeds."
+msgstr ""
+
+#: FMain.class:667
+msgid "sync"
+msgstr ""
+
+#: FMain.class:674
+msgid ""
+"All directory updates within the file system should be done synchronously.\n"
+"Default OFF due to extremely slow write speeds."
+msgstr ""
+
+#: FMain.class:675
+msgid "dirsync"
+msgstr ""
+
+#: FMain.class:682
+msgid "Device selectivity:"
+msgstr ""
+
+#: FMain.class:687
+msgid "Exclude:"
+msgstr ""
+
+#: FMain.class:694
+msgid ""
+"Devices that should not be mounted by VL-Hot.\n"
+"Enter a space delimited list. Example: sda* sdb1 sdc2"
+msgstr ""
+
+#: FMain.class:702
+msgid "Include:"
+msgstr ""
+
+#: FMain.class:709
+msgid ""
+"Devices that must be mounted by VL-Hot even if positive for excluded list.\n"
+"Enter a space delimited list. Example: sda* sdb1 sdc2"
+msgstr ""
+
+#: FMain.class:715
+msgid "FAT"
+msgstr ""
+
+#: FMain.class:720
+msgid "Translation"
+msgstr ""
+
+#: FMain.class:725
+msgid "codepage:"
+msgstr ""
+
+#: FMain.class:733
+msgid ""
+"Sets the codepage for converting to shortname characters\n"
+"on FAT and VFAT filesystems.\n"
+"By default, codepage 437 is used."
+msgstr ""
+
+#: FMain.class:741
+msgid "charset:"
+msgstr ""
+
+#: FMain.class:749
+msgid ""
+"Character set to use for converting between 8 bit characters and 16 bit\n"
+"Unicode characters.  Long filenames are stored on disk in Unicode format.\n"
+"The default is iso8859-15."
+msgstr ""
+
+#: FMain.class:755
+msgid "NTFS"
+msgstr ""
+
+#: FMain.class:765
+msgid "charset/nls:"
+msgstr ""
+
+#: FMain.class:773
+msgid ""
+"Character set to use when returning file names.  Unlike VFAT,\n"
+"NTFS suppresses names that contain unconvertible characters."
+msgstr ""
+
+#: FMain.class:776
+msgid "iso8859-15"
+msgstr ""
+
+#: FMain.class:783
+msgid "Write permission:"
+msgstr ""
+
+#: FMain.class:790
+msgid "Mount NTFS partitions for read-only access."
+msgstr ""
+
+#: FMain.class:791
+msgid "Kernel (RO)"
+msgstr ""
+
+#: FMain.class:799
+msgid "Use NTFS-3G to mount NTFS partitions for read-write access."
+msgstr ""
+
+#: FMain.class:800
+msgid "NTFS-3G (RW)"
+msgstr ""
+
+#: FMain.class:806
+msgid "NTFS3G options:"
+msgstr ""
+
+#: FMain.class:811
+msgid "Forced"
+msgstr ""
+
+#: FMain.class:815
+msgid "Notification"
+msgstr ""
+
+#: FMain.class:820
+msgid "Sound files:"
+msgstr ""
+
+#: FMain.class:825
+msgid "Success:"
+msgstr ""
+
+#: FMain.class:832
+msgid "Successful unmount notification sound file."
+msgstr ""
+
+#: FMain.class:840
+msgid "Error:"
+msgstr ""
+
+#: FMain.class:847
+msgid "Unmount error notification sound file."
+msgstr ""
+
+#: FMain.class:878
+msgid "Enable / disable sound notifications."
+msgstr ""
+
+#: FMain.class:879
+msgid "enable sounds"
+msgstr ""
+
+#: FMain.class:883
+msgid "Mountpoint"
+msgstr ""
+
+#: FMain.class:887
+msgid "Custom mountpoints:"
+msgstr ""
+
+#: FMain.class:899
+msgid "Actions:"
+msgstr ""
+
+#: FMain.class:904
+msgid "Restore saved configuration from /etc/udev/vl-hot_names.conf"
+msgstr ""
+
+#: FMain.class:905
+msgid "Restore"
+msgstr ""
+
+#: FMain.class:911
+msgid "Save configuration changes to /etc/udev/vl-hot_names.conf"
+msgstr ""
+
+#: FMain.class:912
+msgid "Save"
+msgstr ""
+
+#: FMain.class:927
+msgid "vl-hot.conf version: "
+msgstr ""
+
+#: FMain.class:933
+msgid "Reload configuration from disk, loosing unwritten changes."
+msgstr ""
+
+#: FMain.class:934
+msgid "Reload"
+msgstr ""
+
+#: FMain.class:941
+msgid "Writes configuration changes to disk."
+msgstr ""
+
+#: FMain.class:942
+msgid "Write"
+msgstr ""
+
+#: FMain.class:948
+msgid "Exit"
+msgstr ""
