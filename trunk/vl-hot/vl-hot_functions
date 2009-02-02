@@ -71,7 +71,7 @@ function errorExit {
 function fnotify {
 	if [ -x "/usr/bin/notify-send" ]
 	then
-		USER=`who|grep :0|cut -d " " -f1`
+		USER=`who|grep :0 -m 1|cut -d " " -f1`
 		if [ $USER != "" ]
 		then
 			exec $SUDO -u $USER /usr/bin/notify-send -u $NOT_CRIT -t $NOT_TIME -i $NOT_ICON -c $NOT_CATG "$NOT_SUMM" "$NOT_MESS" &
