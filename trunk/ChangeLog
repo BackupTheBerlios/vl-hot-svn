@@ -1,3 +1,7 @@
+2009-02-02    <joe1962@users.sourceforge.net>
+
+	* BUG: Modified vl-hot_functions to grep only 1 line when getting user for notification popup.
+
 2008-12-19    <joe1962@users.sourceforge.net>
 
 	* Redesigned vl-hot-config, versioned as 2.1.0.
